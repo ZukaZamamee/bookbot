@@ -1,7 +1,14 @@
+import sys
 from stats import get_wordcount, get_char_count
 
 def main():
-    book_path = "books/frankenstein.txt"
+    args = sys.argv
+    try:
+        book_path = args[1]
+    except Exception:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
     
     book_text = get_book_text(book_path)    
     #print(book_text)
@@ -37,4 +44,5 @@ def get_book_report(book_path, word_count, sorted_char_count):
         if ch['char'].isalpha() == True:
             print(f"{ch['char']}: {ch['num']}")
     print("============= END ===============")
+
 main()
